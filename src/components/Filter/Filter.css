@@ -1,0 +1,79 @@
+.filter {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter h1 {
+  font-size: 24px;
+  font-weight: 300;
+
+  b {
+    font-weight: bold;
+  }
+}
+
+.filter .top {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.filter .bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.filter .bottom .input {
+  display: flex;
+  flex-direction: column;
+  width: calc((100% / 6) - 16px);
+}
+
+.filter label {
+  font-weight: 400;
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.filter input,
+.filter select {
+  border: 1px solid #e0e0e0;
+  outline: none;
+  padding: 10px;
+  border-radius: 5px;
+  height: 40px;
+  text-transform: capitalize;
+}
+
+.filter .mainBtn {
+  padding: 0;
+
+  a {
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.filter .mainBtn img {
+  max-width: 100%;
+  width: 20px;
+  height: 20px;
+}
+
+@media (width < 576px) {
+  .filter .bottom {
+    gap: 0.5rem;
+  }
+
+  .filter .bottom .input,
+  .filter .mainBtn {
+    width: 100%;
+  }
+}

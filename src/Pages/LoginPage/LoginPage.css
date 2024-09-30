@@ -1,0 +1,41 @@
+.loginPage {
+  min-height: calc(100vh - 96px);
+}
+
+.loginForm {
+  flex: 3;
+}
+
+.loginForm form input {
+  width: 100%;
+  padding: 15px;
+  caret-color: #fece51;
+  border: 1px solid #808080;
+  outline: none;
+  transition: 0.1s;
+}
+
+.loginForm form input:focus {
+  border-color: #fece51;
+}
+
+.loginForm .forgotPassword {
+  color: #FF725E;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.loginForm .link {
+  color: #FF725E;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.loginImg {
+  flex: 2;
+  justify-content: center;
+  align-items: center;
+  background-color: #fcf5f3;
+}

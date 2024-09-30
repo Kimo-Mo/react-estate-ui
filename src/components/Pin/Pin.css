@@ -1,0 +1,12 @@
+.leaflet-popup-content {
+  margin: 13px;
+  margin-right: 24px;
+}
+
+.popupContainer .popupImg {
+  max-width: 100%;
+  width: 64px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 5px;
+}

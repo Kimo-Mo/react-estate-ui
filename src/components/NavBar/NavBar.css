@@ -1,0 +1,162 @@
+.nav,
+.nav .logo,
+.nav .left,
+.nav .right,
+.nav .links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav .left,
+.nav .logo,
+.nav .links,
+.nav .right {
+  gap: 1rem;
+}
+
+.nav {
+  justify-content: space-between;
+}
+
+.nav .left {
+  flex: 3;
+  justify-content: start;
+  padding-block: 1.5rem;
+}
+
+.nav .right {
+  flex: 2;
+  justify-content: end;
+  background-color: #fcf5f3;
+  padding-block: 1.5rem;
+}
+
+.nav .right>a:last-child {
+  margin-right: 20px;
+}
+
+.nav .right .userImg,
+.mobileMenu .userImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (width < 992px) {
+  .nav .right {
+    background-color: #fff;
+  }
+
+  .nav .right>a:last-child {
+    margin-right: 0;
+  }
+}
+
+.logoImg {
+  width: 28px;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-direction: column;
+  background: rgba(0, 0, 0);
+  color: #fff;
+  transition: 0.4s;
+}
+
+.mobileMenu>a {
+  font-weight: bold;
+}
+
+.mobileMenu.active {
+  right: 0;
+}
+
+/*pushing a hamburger menu into a pillow texture like background*/
+
+.menuButton {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 13%;
+  color: #090909;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5em;
+  background: #171717;
+  border: 1px solid #171717;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.menuButton:hover {
+  border: 1px solid black;
+}
+
+.menuButton:active {
+  color: #666;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  display: none;
+  visibility: hidden;
+}
+
+.menuButton span {
+  width: 30px;
+  height: 4px;
+  background: rgb(200, 200, 200);
+  border-radius: 100px;
+  transition: 0.4s ease;
+}
+
+input[type]:checked~span.top {
+  transform: translateY(250%) rotate(45deg);
+  width: 40px;
+}
+
+input[type]:checked~span.bot {
+  transform: translateY(-250%) rotate(-45deg);
+  width: 40px;
+  box-shadow: 0 0 10px #495057;
+}
+
+input[type]:checked~span.mid {
+  transform: translateX(-20px);
+  opacity: 0;
+}
+
+@media (width < 425px) {
+  .menuButton {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .menuButton span {
+    width: 27px;
+  }
+
+  input[type]:checked~span.top {
+    transform: translateY(230%) rotate(45deg);
+    width: 30px;
+  }
+
+  input[type]:checked~span.bot {
+    transform: translateY(-230%) rotate(-45deg);
+    width: 30px;
+  }
+}
