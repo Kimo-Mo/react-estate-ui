@@ -16,9 +16,9 @@ const NavBar = ({user}) => {
           </Link>
           <div className="links d-none d-md-flex gap-lg-5">
             <Link to="/Home">Home</Link>
-            <Link to="/About">About</Link>
-            <Link to="/Contact">Contact</Link>
-            <Link to="/Agents">Agents</Link>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Agents</a>
           </div>
         </div>
         <div className="right d-none d-md-flex gap-lg-5">
