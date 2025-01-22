@@ -8,9 +8,9 @@ import Map from "./../Map/Map";
 import Pin from "../Pin/Pin";
 
 const PostDetails = () => {
-  const posts = useContext(postContext);
+  const { listData, setMenuActive } = useContext(postContext);
   const { ItemId } = useParams();
-  const post = posts.find((p) => {
+  const post = listData.find((p) => {
     return p.id == ItemId;
   });
   const [mainImgSrc, setMainImgSrc] = useState(post.img);
@@ -21,7 +21,9 @@ const PostDetails = () => {
 
   if (post) {
     return (
-      <div className="postDetails container d-flex">
+      <div
+        className="postDetails container d-flex"
+        onClick={() => setMenuActive(false)}>
         <div className="textContainer">
           <div className="wrapper">
             <div className="preview">

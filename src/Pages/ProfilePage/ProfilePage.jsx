@@ -3,13 +3,15 @@ import CardItem from "../../components/CardItem/CardItem";
 import { postContext } from "../../Context/PostContext";
 import { userData } from "../../lib/dummydata";
 import "./ProfilePage.css";
-const ProfilePage = () => {
-  const posts = useContext(postContext);
-  let myList = posts.filter((item) => {
+const ProfilePage = ({ user }) => {
+  const { listData, setMenuActive } = useContext(postContext);
+  let myList = listData.filter((item) => {
     return item.id < 4;
   });
   return (
-    <div className="profilePage container d-flex flex-column flex-lg-row">
+    <div
+      className="profilePage container d-flex flex-column flex-lg-row"
+      onClick={() => setMenuActive(false)}>
       <div className="userInfo">
         <div className="wrapper pe-lg-4 pe-0">
           <div className="d-flex justify-content-between align-items-center flex-wrap mb-4">
@@ -22,13 +24,11 @@ const ProfilePage = () => {
               <img src={userData.img} alt="userImg" className="userImg" />
             </p>
             <p>
-              userName: <span className="ms-3 fw-bold">{userData.name}</span>
+              userName: <span className="ms-3 fw-bold">{user.name}</span>
             </p>
             <p>
               email:{" "}
-              <span className="ms-3 fw-bold text-lowercase">
-                {userData.email}
-              </span>
+              <span className="ms-3 fw-bold text-lowercase">{user.email}</span>
             </p>
           </div>
           <div className="myList mt-4 mb-3">

@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { postContext } from "../../Context/PostContext";
 
 const Map = (props) => {
-  const posts = useContext(postContext);
+  const { listData } = useContext(postContext);
   return (
     <MapContainer
       center={props.center}
@@ -19,7 +19,7 @@ const Map = (props) => {
       />
       {props.children
         ? props.children
-        : posts.map((item) => (
+        : listData.map((item) => (
             <Pin
               key={item.id}
               id={item.id}

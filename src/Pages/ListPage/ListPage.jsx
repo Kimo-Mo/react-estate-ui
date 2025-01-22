@@ -5,15 +5,17 @@ import { postContext } from "../../Context/PostContext";
 import "./ListPage.css";
 import Map from "../../components/Map/Map";
 
-const ListPage = () => {  
-  const posts = useContext(postContext);
+const ListPage = () => {
+  const { listData, setMenuActive } = useContext(postContext);
   return (
-    <div className="listPage container d-flex">
+    <div
+      className="listPage container d-flex"
+      onClick={() => setMenuActive(false)}>
       <div className="listContainer">
         <div className="wrapper">
           <Filter />
           <div className="list">
-            {posts.map((item) => {
+            {listData.map((item) => {
               return (
                 <CardItem
                   id={item.id}
