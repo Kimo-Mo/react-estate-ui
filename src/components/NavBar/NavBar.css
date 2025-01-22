@@ -72,6 +72,7 @@
   background: rgba(0, 0, 0);
   color: #fff;
   transition: 0.4s;
+  z-index: 2;
 }
 
 .mobileMenu>a {
@@ -85,7 +86,7 @@
 /*pushing a hamburger menu into a pillow texture like background*/
 
 .menuButton {
-  z-index: 1;
+  z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;

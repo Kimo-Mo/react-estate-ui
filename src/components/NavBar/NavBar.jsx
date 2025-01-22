@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-import { useState } from "react";
 import { userData } from "../../lib/dummydata";
-const NavBar = ({user}) => {
-  const [menuActive, setMenuActive] = useState(false);
+const NavBar = ({
+  user,
+  setUser,
+  setCurrentState,
+  menuActive,
+  setMenuActive,
+  setForgotPassword,
+}) => {
   return (
     <div className="container">
       <nav className="nav text-capitalize">
@@ -22,7 +27,7 @@ const NavBar = ({user}) => {
           </div>
         </div>
         <div className="right d-none d-md-flex gap-lg-5">
-          {user ? (
+          {user.name !== "" ? (
             <>
               <div>
                 <img
@@ -30,16 +35,38 @@ const NavBar = ({user}) => {
                   src={userData.img}
                   alt="user image"
                 />
-                <span>{userData.name}</span>
+                <Link to="/Profile">Profile</Link>
               </div>
-              <Link to="/Profile" className="mainBtn">
-                Profile
+              <Link
+                to="/Home"
+                replace
+                onClick={() => {
+                  setUser({ name: "", email: "" });
+                  localStorage.removeItem("user");
+                }}
+                className="mainBtn">
+                Log out
               </Link>
             </>
           ) : (
             <>
-              <Link to="/Login">Log in</Link>
-              <Link to="/SignUp" className="mainBtn">
+              <Link
+                to="/Auth"
+                replace
+                onClick={() => {
+                  setCurrentState("login");
+                  setForgotPassword(false);
+                }}>
+                Log in
+              </Link>
+              <Link
+                to="/Auth"
+                replace
+                onClick={() => {
+                  setCurrentState("signUp");
+                  setForgotPassword(false);
+                }}
+                className="mainBtn">
                 Sign Up
               </Link>
             </>
@@ -60,34 +87,54 @@ const NavBar = ({user}) => {
           <Link onClick={() => setMenuActive((prev) => !prev)} to="/Home">
             Home
           </Link>
-          <Link to="/About" onClick={() => setMenuActive((prev) => !prev)}>
+          <a href="#" onClick={() => setMenuActive((prev) => !prev)}>
             About
-          </Link>
-          <Link to="/Contact" onClick={() => setMenuActive((prev) => !prev)}>
+          </a>
+          <a href="#" onClick={() => setMenuActive((prev) => !prev)}>
             Contact
-          </Link>
-          <Link to="/Agents" onClick={() => setMenuActive((prev) => !prev)}>
+          </a>
+          <a href="#" onClick={() => setMenuActive((prev) => !prev)}>
             Agents
-          </Link>
-          {user ? (
+          </a>
+          {user.name ? (
             <>
               <img className="userImg" src={userData.img} alt="user image" />
-              <span>{userData.name}</span>
               <Link
                 to="/Profile"
-                className="mainBtn"
                 onClick={() => setMenuActive((prev) => !prev)}>
                 Profile
+              </Link>
+              <Link
+                to="/Home"
+                replace
+                onClick={() => {
+                  setMenuActive((prev) => !prev);
+                  setUser({ name: "", email: "" });
+                  localStorage.removeItem("user");
+                }}
+                className="mainBtn">
+                Log out
               </Link>
             </>
           ) : (
             <>
-              <Link to="/Login" onClick={() => setMenuActive((prev) => !prev)}>
+              <Link
+                to="/Auth"
+                replace
+                onClick={() => {
+                  setMenuActive((prev) => !prev);
+                  setCurrentState("login");
+                  setForgotPassword(false);
+                }}>
                 Log in
               </Link>
               <Link
-                to="/SignUp"
-                onClick={() => setMenuActive((prev) => !prev)}
+                to="/Auth"
+                onClick={() => {
+                  setMenuActive((prev) => !prev);
+                  setCurrentState("signUp");
+                  setForgotPassword(false);
+                }}
                 className="mainBtn">
                 Sign Up
               </Link>
