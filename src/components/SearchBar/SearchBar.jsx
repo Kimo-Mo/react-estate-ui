@@ -6,8 +6,8 @@ const SearchBar = () => {
   const [query, setQuery] = useState({
     type: "buy",
     location: "",
-    minPrice: 0,
-    maxPrice: 0,
+    minPrice: "",
+    maxPrice: "",
   });
   return (
     <div className="searchBar">
@@ -38,6 +38,8 @@ const SearchBar = () => {
           max={10000000}
           name="minPrice"
           placeholder="Min Price"
+          value={query.minPrice}
+          onChange={(e) => setQuery({ ...query, minPrice: e.target.value })}
         />
         <input
           type="number"
@@ -45,6 +47,8 @@ const SearchBar = () => {
           max={10000000}
           name="maxPrice"
           placeholder="Max Price"
+          value={query.maxPrice}
+          onChange={(e) => setQuery({ ...query, maxPrice: e.target.value })}
         />
         <button className="mainBtn">
           <Link to="/List">

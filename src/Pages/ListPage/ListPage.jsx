@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import CardItem from "../../components/CardItem/CardItem";
 import Filter from "../../components/Filter/Filter";
-import { postContext } from "../../Context/PostContext";
+import { PostContext } from "../../Context/PostContext";
 import "./ListPage.css";
 import Map from "../../components/Map/Map";
+import Loading from "../../components/Loading/Loading";
 
 const ListPage = () => {
-  const { listData, setMenuActive } = useContext(postContext);
-  return (
+  const { listData, setMenuActive } = useContext(PostContext);
+  return listData.length > 0 ? (
     <div
       className="listPage container d-flex"
       onClick={() => setMenuActive(false)}>
@@ -15,7 +16,7 @@ const ListPage = () => {
         <div className="wrapper">
           <Filter />
           <div className="list">
-            {listData.map((item) => {
+            {listData?.map((item) => {
               return (
                 <CardItem
                   id={item.id}
@@ -36,6 +37,8 @@ const ListPage = () => {
         <Map center={[52.505, -1]} />
       </div>
     </div>
+  ) : (
+    <Loading />
   );
 };
 

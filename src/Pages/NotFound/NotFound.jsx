@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import "./NotFound.css";
-import { postContext } from "../../Context/PostContext";
+import { PostContext } from "../../Context/PostContext";
 const NotFound = () => {
-  const { setMenuActive } = useContext(postContext);
+  const { setMenuActive } = useContext(PostContext);
   return (
     <div
       className="notFound text-center container "

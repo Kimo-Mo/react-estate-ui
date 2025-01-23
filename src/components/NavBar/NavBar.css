@@ -93,8 +93,8 @@
   flex-direction: column;
   gap: 13%;
   color: #090909;
-  width: 3rem;
-  height: 3rem;
+  width: 35px;
+  height: 35px;
   border-radius: 0.5em;
   background: #171717;
   border: 1px solid #171717;
@@ -118,46 +118,25 @@ input[type="checkbox"] {
 }
 
 .menuButton span {
-  width: 30px;
-  height: 4px;
-  background: rgb(200, 200, 200);
+  width: 25px;
+  height: 3px;
+  background: #fff;
   border-radius: 100px;
   transition: 0.4s ease;
 }
 
 input[type]:checked~span.top {
   transform: translateY(250%) rotate(45deg);
-  width: 40px;
+  width: 28px;
 }
 
 input[type]:checked~span.bot {
   transform: translateY(-250%) rotate(-45deg);
-  width: 40px;
+  width: 28px;
   box-shadow: 0 0 10px #495057;
 }
 
 input[type]:checked~span.mid {
   transform: translateX(-20px);
   opacity: 0;
-}
-
-@media (width < 425px) {
-  .menuButton {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  .menuButton span {
-    width: 27px;
-  }
-
-  input[type]:checked~span.top {
-    transform: translateY(230%) rotate(45deg);
-    width: 30px;
-  }
-
-  input[type]:checked~span.bot {
-    transform: translateY(-230%) rotate(-45deg);
-    width: 30px;
-  }
 }

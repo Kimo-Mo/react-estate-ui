@@ -2,22 +2,23 @@ import { useNavigate } from "react-router-dom";
 import "./Auth.css";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
-import { postContext } from "../../Context/PostContext";
+import { PostContext } from "../../Context/PostContext";
 
-const Auth = ({
-  currentState,
-  setCurrentState,
-  setUser,
-  forgotPassword,
-  setForgotPassword,
-}) => {
+const Auth = () => {
   const navigate = useNavigate();
   const [formInputs, setFormInputs] = useState({
     name: "",
     email: "",
     password: "",
   });
-  const { setMenuActive } = useContext(postContext);
+  const {
+    currentState,
+    setCurrentState,
+    forgotPassword,
+    setForgotPassword,
+    setMenuActive,
+    setUser,
+  } = useContext(PostContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();

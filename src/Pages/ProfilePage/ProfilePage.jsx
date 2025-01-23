@@ -1,14 +1,16 @@
+import "./ProfilePage.css";
 import { useContext } from "react";
 import CardItem from "../../components/CardItem/CardItem";
-import { postContext } from "../../Context/PostContext";
-import { userData } from "../../lib/dummydata";
-import "./ProfilePage.css";
-const ProfilePage = ({ user }) => {
-  const { listData, setMenuActive } = useContext(postContext);
-  let myList = listData.filter((item) => {
-    return item.id < 4;
-  });
-  return (
+import { PostContext } from "../../Context/PostContext";
+import Loading from "./../../components/Loading/Loading";
+const ProfilePage = () => {
+  const { listData, setMenuActive, userData, user } = useContext(PostContext);
+  let myList =
+    listData.length > 0 &&
+    listData?.filter((item) => {
+      return item.id < 4;
+    });
+  return listData.length > 0 ? (
     <div
       className="profilePage container d-flex flex-column flex-lg-row"
       onClick={() => setMenuActive(false)}>
@@ -38,7 +40,7 @@ const ProfilePage = ({ user }) => {
             </div>
           </div>
           <div className="list">
-            {myList.map((item) => {
+            {myList?.map((item) => {
               return (
                 <CardItem
                   id={item.id}
@@ -71,10 +73,13 @@ const ProfilePage = ({ user }) => {
         </div>
       </div>
     </div>
+  ) : (
+    <Loading />
   );
 };
 
 const Message = () => {
+  const { userData } = useContext(PostContext);
   return (
     <div className="message p-3 rounded-3 bg-white">
       <img src={userData.img} alt="userImg" className="userImg" />

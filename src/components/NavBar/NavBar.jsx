@@ -1,26 +1,29 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-import { userData } from "../../lib/dummydata";
-const NavBar = ({
-  user,
-  setUser,
-  setCurrentState,
-  menuActive,
-  setMenuActive,
-  setForgotPassword,
-}) => {
+import { useContext } from "react";
+import { PostContext } from "../../Context/PostContext";
+const NavBar = () => {
+  const {
+    menuActive,
+    setMenuActive,
+    userData,
+    user,
+    setUser,
+    setCurrentState,
+    setForgotPassword,
+  } = useContext(PostContext);
   return (
     <div className="container">
       <nav className="nav text-capitalize">
         <div className="left gap-lg-5">
-          <Link to="/Home">
+          <Link to="/">
             <div className="logo">
               <img className="logoImg" src="/logo.png" alt="logo img" />
               <span className="fw-bold">FC-Estate</span>
             </div>
           </Link>
           <div className="links d-none d-md-flex gap-lg-5">
-            <Link to="/Home">Home</Link>
+            <Link to="/">Home</Link>
             <a href="#">About</a>
             <a href="#">Contact</a>
             <a href="#">Agents</a>
@@ -38,7 +41,7 @@ const NavBar = ({
                 <Link to="/Profile">Profile</Link>
               </div>
               <Link
-                to="/Home"
+                to="/"
                 replace
                 onClick={() => {
                   setUser({ name: "", email: "" });
@@ -84,7 +87,7 @@ const NavBar = ({
           <span className="bot"></span>
         </label>
         <div className={menuActive ? "mobileMenu active" : "mobileMenu"}>
-          <Link onClick={() => setMenuActive((prev) => !prev)} to="/Home">
+          <Link onClick={() => setMenuActive((prev) => !prev)} to="/">
             Home
           </Link>
           <a href="#" onClick={() => setMenuActive((prev) => !prev)}>
@@ -105,7 +108,7 @@ const NavBar = ({
                 Profile
               </Link>
               <Link
-                to="/Home"
+                to="/"
                 replace
                 onClick={() => {
                   setMenuActive((prev) => !prev);

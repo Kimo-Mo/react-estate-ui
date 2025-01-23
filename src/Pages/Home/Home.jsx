@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import Header from "../../components/Header/Header";
-import { postContext } from "../../Context/PostContext";
+import { PostContext } from "../../Context/PostContext";
+import Loading from "../../components/Loading/Loading";
 const Home = () => {
-  const { setMenuActive } = useContext(postContext);
-  return (
+  const { setMenuActive, userData } = useContext(PostContext);
+  return userData ? (
     <div onClick={() => setMenuActive(false)}>
       <Header />
     </div>
+  ) : (
+    <Loading />
   );
 };
 
